@@ -107,6 +107,12 @@ input {
   font-weight: lighter;
 }
 
+.footer {
+  text-align: center;
+}
+
+// Colour Picker Buttons
+
 .colour-picker {
   margin-left: 50px;
   margin-top: 30px;
