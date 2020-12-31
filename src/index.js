@@ -25,6 +25,13 @@ if (minutes < 10) {
 
 timeChange.innerHTML = `${day} ${hours}:${minutes}`;
 
+// Change days and weather (sub)
+
+let dayChange1 = document.querySelector("#day-1");
+let day1 = days[now.getDay()+1]; 
+dayChange1.innerHTML = `${day1}`;
+
+
 // Search Location
 
 function showWeather(response) {

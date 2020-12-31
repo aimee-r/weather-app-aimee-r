@@ -56,15 +56,27 @@ input {
   padding-left: 10px;
 }
 
-.go-button {
+#go-button {
   border: none;
-  background-color: rgba(139, 138, 138, 0.541);
-  height: 50px;
+  background-color: rgba(139, 138, 138, 0.3);
+  height: 30px;
   border-radius: 3px;
   margin-left: 5px;
 }
 
-:hover.go-button {
+#go-button:hover {
+  cursor: pointer;
+}
+
+#current-button {
+  border: none;
+  background-color: rgba(139, 138, 138, 0.3);
+  height: 30px;
+  border-radius: 3px;
+  margin-left: 5px;
+}
+
+#current-button:hover {
   cursor: pointer;
 }
 
