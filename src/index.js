@@ -1,36 +1,33 @@
 // Feature #1
-let now = new Date();
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
 
-let timeChange = document.querySelector("#current-time");
-
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-];
-let day = days[now.getDay()];
-
-let hours = now.getHours();
-if (hours < 10) {
-  hours = `0${hours}`;
-}
-let minutes = now.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${formatHours(timestamp)}`;
 }
 
-timeChange.innerHTML = `${day} ${hours}:${minutes}`;
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
 
-// Change days and weather (sub)
-
-let dayChange1 = document.querySelector("#day-1");
-let day1 = days[now.getDay()+1]; 
-dayChange1.innerHTML = `${day1}`;
-
+  return `${hours}:${minutes}`;
+}
 
 // Search Location
 
@@ -50,9 +47,11 @@ function showWeather(response) {
   let descWind = document.querySelector("#wind");
   descWind.innerHTML = `${windSpeed}`;
 
-  let humidity = Math.round(response.data.main.humidity);
   let humidityValue = document.querySelector("#humidity");
-  humidityValue.innerHTML = `${humidity}`;
+  humidityValue.innerHTML = Math.round(response.data.main.humidity);
+
+  let dayTime = document.querySelector("current-time")
+  dayTime.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 function enterCity(city) {
@@ -96,6 +95,12 @@ function getCurrentLocation(event) {
 
 let currentLocationButton = document.querySelector("#current-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
+
+// Change days and weather (sub)
+
+let dayChange1 = document.querySelector("#day-1");
+let day1 = days[now.getDay()+1]; 
+dayChange1.innerHTML = `${day1}`;
 
 // Colour Picker Buttons
 
